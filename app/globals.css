@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background: #202124;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+}
+
+/* LAYOUTS */
+.layout-login, .layout-admin{
+    @apply grid-cols-1 grid-rows-2 gap-0 place-items-center bg-[#202124] mx-[200px] py-[100px]
+}
