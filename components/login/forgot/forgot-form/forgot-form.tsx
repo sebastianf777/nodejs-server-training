@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import { Button } from '@heroui/react';
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import { Button } from '@heroui/react'
+import { FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 
-import MailInput from '@/components/mail-input/mail-input';
+import MailInput from '@/components/mail-input/mail-input'
 
 export default function ForgotForm() {
-  const router = useRouter();
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push('/admin');
-  };
+  const router = useRouter()
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    router.push('/admin')
+  }
 
   return (
     <div className="flex flex-col flex-1">
@@ -29,5 +29,5 @@ export default function ForgotForm() {
         </div>
       </form>
     </div>
-  );
+  )
 }
