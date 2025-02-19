@@ -1,15 +1,10 @@
-'use client';
+'use client'
 
-import React from 'react';
+import '../styles/globals.scss'
+import { ReactNode } from 'react'
+import { Providers } from './providers'
 
-import './globals.css';
-import { Providers } from './providers';
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es">
       <head>
@@ -21,5 +16,5 @@ export default function RootLayout({
         <Providers>{children}</Providers>
       </body>
     </html>
-  );
+  )
 }

@@ -1,7 +1,5 @@
-'use client';
-import Image from 'next/image';
-
-import LoginText from '@/components/heading/login-text';
+import Image from 'next/image'
+import LoginText from '@/components/heading/login-text'
 
 export default function AdminBox() {
   return (
@@ -18,5 +16,5 @@ export default function AdminBox() {
         <LoginText heading="Admin Page Vegana" />
       </div>
     </div>
-  );
+  )
 }

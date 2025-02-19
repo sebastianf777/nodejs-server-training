@@ -1,10 +1,6 @@
-'use client';
-
-import React from 'react';
-import Image from 'next/image';
-
-import LoginText from '@/components/heading/login-text';
-import ForgotForm from '@/components/login/forgot/forgot-form/forgot-form';
+import Image from 'next/image'
+import LoginText from '@/components/heading/login-text'
+import ForgotForm from '@/components/login/forgot/forgot-form/forgot-form'
 
 export default function ForgotBox() {
   return (
@@ -25,5 +21,5 @@ export default function ForgotBox() {
         <ForgotForm />
       </div>
     </div>
-  );
+  )
 }

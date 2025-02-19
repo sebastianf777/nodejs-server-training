@@ -1,10 +1,6 @@
-'use client';
-
-import React from 'react';
-import Image from 'next/image';
-
-import LoginText from '@/components/heading/login-text';
-import LoginForm from '@/components/login/login-form/login-form';
+import Image from 'next/image'
+import LoginText from '@/components/heading/login-text'
+import LoginForm from '@/components/login/login-form/login-form'
 
 export default function LoginBox() {
   return (
@@ -25,5 +21,5 @@ export default function LoginBox() {
         <LoginForm />
       </div>
     </div>
-  );
+  )
 }

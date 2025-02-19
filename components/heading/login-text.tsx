@@ -1,20 +1,21 @@
-import React from 'react';
-import { Button } from '@heroui/react';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+'use client'
+
+import { Button } from '@heroui/react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 type LoginTextProps = {
-  heading: string;
-  description?: string;
-  email?: string;
-};
+  heading: string
+  description?: string
+  email?: string
+}
 
 export default function LoginText({
   heading,
   description,
   email,
 }: LoginTextProps) {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <div className="flex flex-col flex-1 mr-10">
@@ -31,7 +32,7 @@ export default function LoginText({
           role="button"
           tabIndex={0}
           onPress={() => {
-            router.push('/login');
+            router.push('/login')
           }}
         >
           <Image
@@ -45,5 +46,5 @@ export default function LoginText({
         </Button>
       )}
     </div>
-  );
+  )
 }

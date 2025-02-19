@@ -1,34 +1,33 @@
-'use client';
+'use client'
 
-import { Button } from '@heroui/react';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-
-import MailInput from '@/components/mail-input/mail-input';
+import { Button } from '@heroui/react'
+import { useState, FormEvent, ChangeEvent } from 'react'
+import { useRouter } from 'next/navigation'
+import MailInput from '@/components/mail-input/mail-input'
 
 type FormProps = {
-  onEmailChangeAction?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+  onEmailChangeAction?: (e: ChangeEvent<HTMLInputElement>) => void
+}
 
 export default function LoginForm({ onEmailChangeAction }: FormProps) {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
+  const router = useRouter()
+  const [email, setEmail] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
     router.push(
-      `/login/password${email ? `?email=${encodeURIComponent(email)}` : ''}`
-    );
-  };
+      `/login/password${email ? `?email=${encodeURIComponent(email)}` : ''}`,
+    )
+  }
 
   return (
     <div className="flex flex-col flex-1">
       <form onSubmit={handleSubmit}>
         <MailInput
           label="Correo electrónico o teléfono"
-          onEmailChangeAction={e => {
-            setEmail(e.target.value);
-            onEmailChangeAction?.(e);
+          onEmailChangeAction={(e) => {
+            setEmail(e.target.value)
+            onEmailChangeAction?.(e)
           }}
         />
 
@@ -64,5 +63,5 @@ export default function LoginForm({ onEmailChangeAction }: FormProps) {
         </div>
       </form>
     </div>
-  );
+  )
 }
