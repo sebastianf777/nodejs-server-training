@@ -1,44 +1,26 @@
-'use client';
+'use client'
 
-import { Button, Checkbox } from '@heroui/react';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import { Button } from '@heroui/react'
+import { useRouter } from 'next/navigation'
+import { FormEvent } from 'react'
 
-import MailInput from '@/components/mail-input/mail-input';
+import UserInput from '@/components/user-input/user-input'
 
 type PasswordProps = {
-  handleSubmitAction: (e: React.FormEvent) => void;
-};
+  handleSubmitAction: (e: FormEvent) => void
+}
 
 export default function PasswordForm({ handleSubmitAction }: PasswordProps) {
-  const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(prev => !prev);
-  };
-
-  const handleForgotPassword = () => {
-    router.push('/forgot'); // Redirige a la página de recuperación de contraseña
-  };
+  const router = useRouter()
 
   return (
     <div>
       <form onSubmit={handleSubmitAction}>
-        <MailInput
+        <UserInput
           label="Ingresa tu contraseña"
-          type={showPassword ? 'text' : 'password'}
+          showPasswordToggle={true}
+          inputType="password"
         />
-
-        <div className="show-password flex items-center gap-2 mt-2">
-          <Checkbox
-            className="text-[#A8C7FA] bg-transparent border-none cursor-pointer text-left p-0 mt-[10px]"
-            isSelected={showPassword}
-            onValueChange={togglePasswordVisibility}
-          >
-            Mostrar contraseña
-          </Checkbox>
-        </div>
 
         <div className="footer-form">
           {/* Botón para recuperar contraseña */}
@@ -46,7 +28,7 @@ export default function PasswordForm({ handleSubmitAction }: PasswordProps) {
             className="transparent-button"
             radius="full"
             onPress={() => {
-              router.push('/login/forgot');
+              router.push('/login/forgot')
             }}
           >
             ¿Olvidaste la contraseña?
@@ -64,5 +46,5 @@ export default function PasswordForm({ handleSubmitAction }: PasswordProps) {
         </div>
       </form>
     </div>
-  );
+  )
 }
