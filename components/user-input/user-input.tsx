@@ -45,7 +45,7 @@ export default function UserInput({
         value={value}
         onChange={(e) => {
           if (
-            inputType === 'username' &&
+            (inputType === 'username' || inputType === 'password') &&
             !/^[a-zA-Z0-9]*$/.test(e.target.value)
           )
             return

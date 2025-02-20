@@ -1,19 +1,39 @@
 'use client'
 
 import { Button } from '@heroui/react'
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import UserInput from '@/components/user-input/user-input'
+
+const LOGIN_EXPIRATION_TIME = 5 * 60 * 1000 // 5 minutes
 
 export default function LoginForm() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [username, setUsername] = useState(
+    typeof window !== 'undefined' ? localStorage.getItem('username') || '' : '',
+  )
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const loginTimestamp = localStorage.getItem('loginTimestamp')
+
+      if (loginTimestamp) {
+        const elapsedTime = Date.now() - Number(loginTimestamp)
+
+        if (elapsedTime > LOGIN_EXPIRATION_TIME) {
+          router.push('/login/password')
+        }
+      }
+    }
+  }, [router])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
+      localStorage.setItem('username', username)
       router.push(`/login/password`)
     }, 3000)
   }
@@ -26,7 +46,11 @@ export default function LoginForm() {
             Loading
           </Button>
         ) : (
-          <UserInput label="Ingresa tu usuario" inputType="username" />
+          <UserInput
+            label="Ingresa tu usuario"
+            inputType="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
         )}
 
         <Button

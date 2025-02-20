@@ -2,7 +2,7 @@
 
 import { Button } from '@heroui/react'
 import { useRouter } from 'next/navigation'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, useEffect } from 'react'
 
 import UserInput from '@/components/user-input/user-input'
 
@@ -10,15 +10,33 @@ export default function PasswordForm() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [passwordValue, setPasswordValue] = useState('')
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedUsername = localStorage.getItem('username')
+
+      if (!storedUsername) {
+        router.push('/login')
+        return
+      }
+    }
+  }, [router])
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
+    setError('')
     if (passwordValue === '777Holis') {
       setLoading(true)
       setTimeout(() => {
+        localStorage.setItem('loginTimestamp', Date.now().toString())
         router.push('/admin')
       }, 3000)
     } else {
-      alert('Incorrect password')
+      setError('Incorrect password')
+      setTimeout(() => {
+        setError('')
+      }, 1000)
     }
   }
 
@@ -26,8 +44,20 @@ export default function PasswordForm() {
     <div>
       <form onSubmit={handleSubmit}>
         {loading ? (
-          <Button isLoading color="primary" className="solid-button w-full">
+          <Button
+            isLoading
+            color="primary"
+            className="solid-button w-full pointer-events-none"
+          >
             Loading
+          </Button>
+        ) : error ? (
+          <Button
+            disabled
+            color="warning"
+            className="solid-button w-full pointer-events-none"
+          >
+            {error}
           </Button>
         ) : (
           <UserInput
