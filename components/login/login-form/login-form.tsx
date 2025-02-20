@@ -1,40 +1,39 @@
 'use client'
 
 import { Button } from '@heroui/react'
-import { useState, FormEvent, ChangeEvent } from 'react'
+import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import MailInput from '@/components/mail-input/mail-input'
+import UserInput from '@/components/user-input/user-input'
 
-type FormProps = {
-  onEmailChangeAction?: (e: ChangeEvent<HTMLInputElement>) => void
-}
-
-export default function LoginForm({ onEmailChangeAction }: FormProps) {
+export default function LoginForm() {
   const router = useRouter()
-  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    router.push(
-      `/login/password${email ? `?email=${encodeURIComponent(email)}` : ''}`,
-    )
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      router.push(`/login/password`)
+    }, 3000)
   }
 
   return (
     <div className="flex flex-col flex-1">
       <form onSubmit={handleSubmit}>
-        <MailInput
-          label="Correo electrónico o teléfono"
-          onEmailChangeAction={(e) => {
-            setEmail(e.target.value)
-            onEmailChangeAction?.(e)
-          }}
-        />
+        {loading ? (
+          <Button isLoading color="primary" className="solid-button w-full">
+            Loading
+          </Button>
+        ) : (
+          <UserInput label="Ingresa tu usuario" inputType="username" />
+        )}
 
         <Button
           className="text-[#A8C7FA] bg-transparent border-0 cursor-pointer text-left p-0 mt-[10px] text-xs hover:text-[#e8eaed]"
           type="button"
           onPress={() => router.push('/login/forgot')}
+          disabled={loading}
         >
           ¿Olvidaste el correo electrónico?
         </Button>
@@ -48,18 +47,36 @@ export default function LoginForm({ onEmailChangeAction }: FormProps) {
         </p>
 
         <div className="footer-form">
-          <Button className="transparent-button" radius="full" type="button">
+          <Button
+            className="transparent-button"
+            radius="full"
+            type="button"
+            disabled={loading}
+          >
             Crear cuenta
           </Button>
 
-          <Button
-            className="solid-button"
-            color="primary"
-            radius="full"
-            type="submit"
-          >
-            Siguiente
-          </Button>
+          {loading ? (
+            <Button
+              className="solid-button"
+              color="primary"
+              radius="full"
+              type="submit"
+              isDisabled
+            >
+              Siguiente
+            </Button>
+          ) : (
+            <Button
+              className="solid-button"
+              color="primary"
+              radius="full"
+              type="submit"
+              disabled={loading}
+            >
+              Siguiente
+            </Button>
+          )}
         </div>
       </form>
     </div>
