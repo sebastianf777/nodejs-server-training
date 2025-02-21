@@ -1,10 +1,12 @@
 'use client'
 
-import { Button } from '@heroui/react'
+import { Button, Alert } from '@heroui/react'
 import { useRouter } from 'next/navigation'
-import { FormEvent, useState, useEffect } from 'react'
+import { LOCAL_STORAGE } from '@/components/utils/utils.constants'
+import { FormEvent, useState } from 'react'
 
 import UserInput from '@/components/user-input/user-input'
+import { Spinner } from '@heroui/spinner'
 
 export default function PasswordForm() {
   const router = useRouter()
@@ -12,25 +14,17 @@ export default function PasswordForm() {
   const [passwordValue, setPasswordValue] = useState('')
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // TODO SEBA | Reemplace el username por LOCAL_STORAGE.SESSION
-      const storedUsername = localStorage.getItem('username')
-
-      if (!storedUsername) {
-        router.push('/login')
-        return
-      }
-    }
-  }, [router])
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     setError('')
     if (passwordValue === '777Holis') {
       setLoading(true)
+
       setTimeout(() => {
-        localStorage.setItem('sessionTimestamp', Date.now().toString())
+        localStorage.setItem(
+          LOCAL_STORAGE.SESSION_TIMESTAMP,
+          Date.now().toString(),
+        )
         router.push('/admin')
       }, 3000)
     } else {
@@ -45,21 +39,11 @@ export default function PasswordForm() {
     <div>
       <form onSubmit={handleSubmit}>
         {loading ? (
-          <Button
-            isLoading
-            color="primary"
-            className="solid-button w-full pointer-events-none"
-          >
-            Loading
-          </Button>
+          <div className="flex justify-center">
+            <Spinner color="default" label="Loading" labelColor="foreground" />
+          </div>
         ) : error ? (
-          <Button
-            disabled
-            color="warning"
-            className="solid-button w-full pointer-events-none"
-          >
-            {error}
-          </Button>
+          <Alert color="primary" title={error} />
         ) : (
           <UserInput
             label="Ingresa tu contraseña"
@@ -81,29 +65,15 @@ export default function PasswordForm() {
           >
             ¿Olvidaste la contraseña?
           </Button>
-
-          {/* TODO SEBA | Tiene que ser solo 1 button */}
-          {loading ? (
-            <Button
-              className="solid-button"
-              color="primary"
-              radius="full"
-              type="submit"
-              isDisabled
-            >
-              Siguiente
-            </Button>
-          ) : (
-            <Button
-              className="solid-button"
-              color="primary"
-              radius="full"
-              type="submit"
-              disabled={loading}
-            >
-              Siguiente
-            </Button>
-          )}
+          <Button
+            className="solid-button"
+            color="primary"
+            radius="full"
+            type="submit"
+            isDisabled={loading}
+          >
+            Siguiente
+          </Button>
         </div>
       </form>
     </div>

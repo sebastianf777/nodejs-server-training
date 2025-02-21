@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import LoginText from '@/components/heading/login-text'
+import AdminForm from '@/components/admin/admin-form/admin-form'
 
 export default function AdminBox() {
   return (
@@ -14,7 +15,7 @@ export default function AdminBox() {
 
       <div className="grid grid-cols-[auto_1fr] gap-4 mt-4">
         <LoginText heading="Admin Page Vegana" />
-        <AdminBox />
+        <AdminForm />
       </div>
     </div>
   )

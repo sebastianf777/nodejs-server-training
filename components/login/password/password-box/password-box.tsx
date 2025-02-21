@@ -13,8 +13,7 @@ export default function PasswordBox() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedUsername =
-        localStorage.getItem(LOCAL_STORAGE.SESSION_TIMESTAMP) || ''
+      const storedUsername = localStorage.getItem(LOCAL_STORAGE.USERNAME) || ''
       setUsername(storedUsername)
     }
   }, [])

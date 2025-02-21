@@ -17,17 +17,13 @@ export default function Home() {
         LOCAL_STORAGE.SESSION_TIMESTAMP,
       )
       const storedUsername = localStorage.getItem(LOCAL_STORAGE.USERNAME)
-
-      if (sessionTimestamp) {
+      if (!storedUsername) {
+        router.push('/login')
+      } else if (sessionTimestamp) {
         const elapsedTime = Date.now() - Number(sessionTimestamp)
-
         if (elapsedTime > SESSION_EXPIRATION_TIME) {
           router.push('/login/password')
         }
-      } else if (!storedUsername) {
-        router.push('/login')
-      } else {
-        router.push('/login/password')
       }
     }
   }, [router])
