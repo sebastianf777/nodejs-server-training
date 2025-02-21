@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { LOCAL_STORAGE } from '@/components/utils/utils.constants'
 
 import PasswordForm from '../password-form/password-form'
 
@@ -12,13 +13,14 @@ export default function PasswordBox() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedUsername = localStorage.getItem('username') || ''
+      const storedUsername =
+        localStorage.getItem(LOCAL_STORAGE.SESSION_TIMESTAMP) || ''
       setUsername(storedUsername)
     }
   }, [])
 
   return (
-    <div className="flex flex-col items-start relative bg-[#0E0E0E] p-8 rounded-3xl text-white w-full min-h-[384px]">
+    <div className="box-container">
       <Image
         alt={'Logo'}
         className={'w-10 h-10 self-start mb-4'}

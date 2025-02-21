@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import LoginText from '@/components/heading/login-text'
-import LoginForm from '@/components/login/login-form/login-form'
+import HomeForm from '@/components/home/home-form/home-form'
 
 export default function LoginBox() {
   return (
@@ -14,11 +14,8 @@ export default function LoginBox() {
       />
 
       <div className="grid grid-cols-[7fr_7fr] gap-5 w-full">
-        <LoginText
-          description="Con tu Cuenta de Google. Esta cuenta estará disponible para otras apps de Google en el navegador."
-          heading="Acceder"
-        />
-        <LoginForm />
+        <LoginText description="Bienvenido a esta pagina" heading="Home" />
+        <HomeForm />
       </div>
     </div>
   )

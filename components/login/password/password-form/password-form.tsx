@@ -14,6 +14,7 @@ export default function PasswordForm() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      // TODO SEBA | Reemplace el username por LOCAL_STORAGE.SESSION
       const storedUsername = localStorage.getItem('username')
 
       if (!storedUsername) {
@@ -29,7 +30,7 @@ export default function PasswordForm() {
     if (passwordValue === '777Holis') {
       setLoading(true)
       setTimeout(() => {
-        localStorage.setItem('loginTimestamp', Date.now().toString())
+        localStorage.setItem('sessionTimestamp', Date.now().toString())
         router.push('/admin')
       }, 3000)
     } else {
@@ -81,6 +82,7 @@ export default function PasswordForm() {
             ¿Olvidaste la contraseña?
           </Button>
 
+          {/* TODO SEBA | Tiene que ser solo 1 button */}
           {loading ? (
             <Button
               className="solid-button"

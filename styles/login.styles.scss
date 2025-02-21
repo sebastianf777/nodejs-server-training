@@ -3,19 +3,6 @@
     color: white;
 }
 
-/* FOOTER */
-.footer-form{
-    @apply absolute right-10 bottom-10 flex gap-5
-}
-
-/* BUTTONS */
-.transparent-button{
-    @apply py-3 px-5 bg-transparent border-0 text-[#A8C7FA] cursor-pointer transition-colors duration-300 ease-in-out mt-[10px] self-end hover:bg-[#A8C7FA] hover:opacity-70 hover:text-[#062E6F]
-}
-.solid-button{
-    @apply py-3 px-5 bg-[#A8C7FA] border-0 text-[#062E6F] cursor-pointer transition-colors duration-300 ease-in-out mt-[10px] self-end hover:opacity-70
-}
-
 /* AUTOFILL BACKGROUND */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

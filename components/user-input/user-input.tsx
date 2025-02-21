@@ -27,7 +27,7 @@ export default function UserInput({
   }
 
   return (
-    <div className="relative mb-4 w-full">
+    <div className="relative w-full">
       <input
         required
         className="peer w-full rounded-md border border-gray-300 bg-transparent text-white px-4 py-3 outline-none transition focus:border-[#A8C7FA] focus:shadow-md focus:shadow-[#1A73E8]/60"

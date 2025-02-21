@@ -4,7 +4,7 @@ import ForgotForm from '@/components/login/forgot/forgot-form/forgot-form'
 
 export default function ForgotBox() {
   return (
-    <div className="flex flex-col items-start relative bg-[#0E0E0E] p-8 rounded-3xl text-white w-full min-h-[384px]">
+    <div className="box-container">
       <Image
         alt="Logo"
         className="w-10 h-10 self-start mb-4"
