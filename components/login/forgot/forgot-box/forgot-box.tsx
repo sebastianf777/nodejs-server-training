@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import LoginText from '@/components/heading/login-text'
+import TextLeft from '@/components/heading/text-left'
 import ForgotForm from '@/components/login/forgot/forgot-form/forgot-form'
 
 export default function ForgotBox() {
@@ -14,7 +14,7 @@ export default function ForgotBox() {
       />
 
       <div className="grid grid-cols-2 gap-5 w-full">
-        <LoginText
+        <TextLeft
           description="Ingresa tu número de teléfono o correo de recuperación."
           heading="Buscar tu correo electrónico"
         />

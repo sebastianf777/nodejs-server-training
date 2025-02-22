@@ -5,7 +5,7 @@ type LoginTextProps = {
   description?: string
 }
 
-export default function LoginText({ heading, description }: LoginTextProps) {
+export default function TextLeft({ heading, description }: LoginTextProps) {
   return (
     <div className="flex flex-col flex-1 mr-10">
       <h1 className="text-[38px]">{heading}</h1>

@@ -6,7 +6,7 @@ import { LOCAL_STORAGE } from '@/components/utils/utils.constants'
 
 import PasswordForm from '../password-form/password-form'
 
-import LoginText from '@/components/heading/login-text'
+import TextLeft from '@/components/heading/text-left'
 
 export default function PasswordBox() {
   const [username, setUsername] = useState('')
@@ -29,7 +29,7 @@ export default function PasswordBox() {
       />
 
       <div className="grid grid-cols-2 gap-5 w-full">
-        <LoginText description={''} heading={username || 'Username'} />
+        <TextLeft description={''} heading={username || 'Username'} />
 
         <PasswordForm />
       </div>
