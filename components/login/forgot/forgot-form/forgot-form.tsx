@@ -1,25 +1,37 @@
 'use client'
 
-import { Button } from '@heroui/react'
-import { FormEvent } from 'react'
+import { Button, Alert } from '@heroui/react'
+import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import UserInput from '@/components/user-input/user-input'
 
 export default function ForgotForm() {
   const router = useRouter()
-
+  const [alerts, setAlerts] = useState(false)
   return (
     <div className="flex flex-col flex-1">
       <form
         onSubmit={(e: FormEvent) => {
           e.preventDefault()
-          router.push('/admin')
+          if (!alerts) {
+            setAlerts(true)
+          } else {
+            router.push('/login')
+          }
         }}
       >
-        <UserInput
-          label="Número de teléfono o Correo electrónico"
-          inputType={'email'}
-        />
+        {alerts ? (
+          <Alert
+            color="primary"
+            title="Un correo electronico ha sido enviado para resetear tu password"
+          />
+        ) : (
+          <UserInput
+            label="Número de teléfono o Correo electrónico"
+            inputType={'email'}
+          />
+        )}
+
         <div className="footer-form">
           <Button
             className={'solid-button'}
@@ -27,7 +39,7 @@ export default function ForgotForm() {
             radius={'full'}
             type={'submit'}
           >
-            Siguiente
+            {alerts ? 'Atrás' : 'Siguiente'}
           </Button>
         </div>
       </form>
