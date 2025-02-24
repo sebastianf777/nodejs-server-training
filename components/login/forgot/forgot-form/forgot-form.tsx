@@ -16,7 +16,7 @@ export default function ForgotForm() {
           if (!alerts) {
             setAlerts(true)
           } else {
-            router.push('/login')
+            router.push('/login/password')
           }
         }}
       >

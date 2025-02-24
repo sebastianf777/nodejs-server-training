@@ -1,10 +1,32 @@
 'use client'
 
 import '../styles/globals.scss'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { Providers } from './providers'
+import { useRouter } from 'next/navigation'
+import {
+  LOCAL_STORAGE,
+  SESSION_EXPIRATION_TIME,
+} from '@/components/utils/utils.constants'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const router = useRouter()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const sessionTimestamp = localStorage.getItem(
+        LOCAL_STORAGE.SESSION_TIMESTAMP,
+      )
+      const elapsedTime = Date.now() - Number(sessionTimestamp)
+      const storedUsername = localStorage.getItem(LOCAL_STORAGE.USERNAME)
+      if (!storedUsername) {
+        router.push('/login')
+      } else if (!sessionTimestamp || elapsedTime > SESSION_EXPIRATION_TIME) {
+        localStorage.removeItem(LOCAL_STORAGE.SESSION_TIMESTAMP)
+        router.push('/login/password')
+      }
+    }
+  }, [router])
   return (
     <html lang="es">
       <head>

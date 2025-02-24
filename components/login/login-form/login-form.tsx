@@ -47,7 +47,7 @@ export default function LoginForm() {
         <p className="text-[#9aa0a6] mt-12 leading-[1.4] text-sm">
           ¿Esta no es tu computadora? Usa el modo de invitado para navegar de
           forma privada.{' '}
-          <span className="bg-transparent border-0 text-[#A8C7FA] underline cursor-pointer p-0 hover:text-[#e8eaed]">
+          <span className="bg-transparent border-0 text-[#A8C7FA] opacity-[.5] underline cursor-pointer p-0 hover:text-[#e8eaed] pointer-events-none">
             Más información para usar el modo de invitado
           </span>
         </p>
@@ -57,7 +57,7 @@ export default function LoginForm() {
             className="transparent-button"
             radius="full"
             type="button"
-            isDisabled={loading}
+            isDisabled
           >
             Crear cuenta
           </Button>
