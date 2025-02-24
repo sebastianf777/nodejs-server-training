@@ -61,7 +61,7 @@ export default function PasswordForm() {
             onPress={() => {
               router.push('/login/forgot')
             }}
-            disabled={loading}
+            isDisabled={loading}
           >
             ¿Olvidaste la contraseña?
           </Button>

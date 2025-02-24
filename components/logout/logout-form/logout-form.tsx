@@ -4,11 +4,11 @@ import { Button } from '@heroui/react'
 import { FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 
-export default function AdminForm() {
+export default function LogoutForm() {
   const router = useRouter()
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    router.push('/logout')
+    router.push('/login')
   }
 
   return (
@@ -21,7 +21,7 @@ export default function AdminForm() {
             radius="full"
             type="submit"
           >
-            Logout
+            Login
           </Button>
         </div>
       </form>
