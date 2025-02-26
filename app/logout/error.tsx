@@ -26,12 +26,14 @@ export default function Error({
 
   return (
     <div
-      className="bg-red-100 border border-red-400 text-red-700 p-4 rounded-md max-w-md mx-auto mt-8"
-      role="alert"
-      aria-live="polite"
+      className={
+        'bg-red-100 border border-red-400 text-red-700 p-4 rounded-md max-w-md mx-auto mt-8'
+      }
+      role={'alert'}
+      aria-live={'polite'}
     >
-      <h2 className="text-sm font-semibold">Error al cerrar sesión</h2>
-      <p className="mt-1 text-sm">
+      <h2 className={'text-sm font-semibold'}>Error al cerrar sesión</h2>
+      <p className={'mt-1 text-sm'}>
         {errorMessage || 'Ocurrió un problema desconocido al cerrar sesión.'}.
         Redireccionando al login en 3 segundos...
       </p>

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import TextLeft from '@/components/heading/text-left'
+import HeadingDescription from '@/components/global/heading-description/headingDescription'
 import LogoutForm from '@/components/logout/logout-form/logout-form'
 
 export default function LogoutBox() {
@@ -14,7 +14,7 @@ export default function LogoutBox() {
       />
 
       <div className="grid grid-cols-[auto_1fr] gap-4 mt-4">
-        <TextLeft heading="Te deslogueaste correctamente" />
+        <HeadingDescription heading="Te deslogueaste correctamente" />
         <LogoutForm />
       </div>
     </div>

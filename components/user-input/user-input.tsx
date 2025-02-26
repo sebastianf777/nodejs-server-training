@@ -55,13 +55,34 @@ export default function UserInput({
       />
       <label
         className={`absolute left-4 px-1 text-gray-400 text-base transition-all pointer-events-none
-    ${value.length > 0 || 'peer-focus:top-[1px] peer-focus:text-xs peer-focus:text-[#A8C7FA] peer-focus:bg-[#0E0E0E]'}
-    ${value.length > 0 ? 'top-[-7px] text-xs text-[#A8C7FA] bg-[#0E0E0E]' : 'top-1/2 -translate-y-1/2 text-base text-gray-400'}
+    ${value.length > 0 || 'peer-focus:top-[1px] peer-focus:heading-description-xs peer-focus:heading-description-[#A8C7FA] peer-focus:bg-[#0E0E0E]'}
+    ${value.length > 0 ? 'top-[-7px] heading-description-xs heading-description-[#A8C7FA] bg-[#0E0E0E]' : 'top-1/2 -translate-y-1/2 heading-description-base heading-description-gray-400'}
   `}
         htmlFor={inputType}
       >
         {label}
       </label>
+
+      {/**
+        1. El loading de un input tiene que ser un estado, un state
+        Ejemplo:
+       <input loading={isLoading}>
+       donde isLoading es tu estado (useState) para indicar si cargas o no.
+       El Theme de UI solito deberia ponerte el spiner de cargando.
+
+       2. Cuando tenes el input de password, y queres que se muestre con el ojo.
+       Primero te fijas si ya esta hecho en tu theme de UI
+       si no esta hehco la forma correcta seria tener un estado (useState)
+       donde manejes de que tipo de input se trata:
+       Ejemplo
+       1. const [inputType, setInputType] = useState("password")
+       2. Haces click en el ojo
+       3. setInputType("heading-description"), aca lo cambias para ver lo que tiene puesto
+       4. Cuando queres cerrar el ojo, le haces setInputType("password")
+
+       INFO
+       Cada vez que el estado del componente cambia, se hace un re render.
+       */}
 
       {/* Eye icon button */}
       {inputType === 'password' && togglePasswordVisibility && (

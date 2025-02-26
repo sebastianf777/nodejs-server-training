@@ -25,9 +25,9 @@ export default function LogoutPage() {
     }
   }, [])
 
-  // if (localStorage) {
-  //   throw new Error('Failed to logout: ')
-  // }
+  if (localStorage) {
+    throw new Error('Failed to logout: ')
+  }
 
   return (
     <>

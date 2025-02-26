@@ -1,10 +1,17 @@
 'use client'
 
-import '../styles/globals.scss'
 import { ReactNode, useEffect } from 'react'
 import { Providers } from './providers'
 import { useRouter } from 'next/navigation'
 import { Toaster } from 'react-hot-toast'
+import '@mantine/core/styles.css'
+import '../styles/globals.scss'
+
+import {
+  ColorSchemeScript,
+  MantineProvider,
+  mantineHtmlProps,
+} from '@mantine/core'
 import {
   LOCAL_STORAGE,
   SESSION_EXPIRATION_TIME,
@@ -29,16 +36,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     }
   }, [router])
   return (
-    <html lang="es">
+    <html lang="es" {...mantineHtmlProps}>
       <head>
         <title>Mi Aplicación</title>
-        <meta charSet="UTF-8" />
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta charSet={'UTF-8'} />
+        <meta
+          content={'width=device-width, initial-scale=1.0'}
+          name={'viewport'}
+        />
+        <ColorSchemeScript />
       </head>
       <body>
         <Providers>
-          {children}
-          <Toaster position="top-right" reverseOrder={false} />
+          <MantineProvider>{children}</MantineProvider>
+
+          <Toaster position={'top-right'} reverseOrder={false} />
         </Providers>
       </body>
     </html>

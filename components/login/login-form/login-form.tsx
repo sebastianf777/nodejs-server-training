@@ -10,8 +10,8 @@ export default function LoginForm() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [username, setUsername] = useState('')
-
   const handleSubmit = (e: FormEvent) => {
+    // TODO | Test si es necesario o no
     e.preventDefault()
     setLoading(true)
     setTimeout(() => {
@@ -23,6 +23,7 @@ export default function LoginForm() {
   return (
     <div className="flex flex-col flex-1 ">
       <form onSubmit={handleSubmit}>
+        {/* TODO | REFACTOR */}
         {loading ? (
           <div className="flex justify-center">
             <Spinner color="default" label="Loading" labelColor="foreground" />
@@ -35,6 +36,7 @@ export default function LoginForm() {
           />
         )}
 
+        {/* TODO | Debe ser un link */}
         <Button
           className="text-[#A8C7FA] bg-transparent border-0 cursor-pointer h-fit text-left p-0 mt-3  hover:text-[#e8eaed]"
           type="button"
@@ -53,6 +55,7 @@ export default function LoginForm() {
         </p>
 
         <div className="footer-form">
+          {/* TODO | Debe ser un link */}
           <Button
             className="transparent-button"
             radius="full"

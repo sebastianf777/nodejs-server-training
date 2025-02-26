@@ -1,11 +1,15 @@
 'use client'
 
-type TextLeftProps = {
+type HeadingDescriptionProps = {
   heading: string
   description?: string
 }
 
-export default function TextLeft({ heading, description }: TextLeftProps) {
+// TODO | Cambiar el nombre de este componente y ponerle uno mas inidicativo
+export default function HeadingDescription({
+  heading,
+  description,
+}: HeadingDescriptionProps) {
   return (
     <div className="flex flex-col flex-1 mr-10">
       <h1 className="text-[38px]">{heading}</h1>
