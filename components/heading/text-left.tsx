@@ -1,11 +1,11 @@
 'use client'
 
-type LoginTextProps = {
+type TextLeftProps = {
   heading: string
   description?: string
 }
 
-export default function TextLeft({ heading, description }: LoginTextProps) {
+export default function TextLeft({ heading, description }: TextLeftProps) {
   return (
     <div className="flex flex-col flex-1 mr-10">
       <h1 className="text-[38px]">{heading}</h1>

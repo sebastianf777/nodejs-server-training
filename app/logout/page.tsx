@@ -1,42 +1,36 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { LOCAL_STORAGE } from '@/components/utils/utils.constants'
 import LogoutBox from '@/components/logout/logout-box/logout-box'
-import { useRouter } from 'next/navigation'
-import ErrorComponent from '@/app/logout/error'
+import { redirect } from 'next/navigation'
+import { toast } from 'react-hot-toast'
 
 export default function LogoutPage() {
-  const router = useRouter()
-  const [isLogout, setIsLogout] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
   useEffect(() => {
-    if (typeof window !== 'undefined' && localStorage != null) {
-      setIsLogout(true)
-
-      if (!isLogout) {
-        setError('Hubo un error, redirigiendo al login...')
-        return
-      }
-      setTimeout(() => {
+    if (typeof window !== 'undefined' || localStorage != null) {
+      try {
         localStorage.removeItem(LOCAL_STORAGE.SESSION_TIMESTAMP)
-      }, 3000)
+        toast.success('Redireccionando.', {
+          id: 'logout-redirect',
+        })
+      } catch (error) {
+        console.error('Logout error:', error)
+        throw new Error('Failed to logout: ' + error)
+      } finally {
+        setTimeout(() => {
+          redirect('/login/password')
+        }, 3000)
+      }
     }
   }, [])
 
+  // if (localStorage) {
+  //   throw new Error('Failed to logout: ')
+  // }
+
   return (
     <>
-      {error ? (
-        <ErrorComponent
-          error={new Error(error)}
-          reset={() =>
-            setTimeout(() => {
-              router.push('/login')
-            }, 3000)
-          }
-        />
-      ) : null}
       <LogoutBox />
     </>
   )

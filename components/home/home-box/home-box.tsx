@@ -2,7 +2,7 @@ import Image from 'next/image'
 import TextLeft from '@/components/heading/text-left'
 import HomeForm from '@/components/home/home-form/home-form'
 
-export default function LoginBox() {
+export default function HomeBox() {
   return (
     <div className="box-container">
       <Image

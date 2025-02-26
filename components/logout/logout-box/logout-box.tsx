@@ -14,7 +14,7 @@ export default function LogoutBox() {
       />
 
       <div className="grid grid-cols-[auto_1fr] gap-4 mt-4">
-        <TextLeft heading="Logout Page Vegana" />
+        <TextLeft heading="Te deslogueaste correctamente" />
         <LogoutForm />
       </div>
     </div>

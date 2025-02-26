@@ -1,32 +1,40 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
-export default function ErrorComponent({
+export default function Error({
   error,
-  reset,
 }: {
-  error: Error
+  error: unknown
   reset: () => void
 }) {
+  const router = useRouter()
+
   useEffect(() => {
     console.error('Logout error:', error)
-  }, [error])
+
+    const redirectTimer = setTimeout(() => {
+      router.push('/login/password')
+    }, 3000)
+
+    return () => clearTimeout(redirectTimer)
+  }, [error, router])
+
+  const errorMessage =
+    error instanceof Error ? (error as Error).message : String(error)
 
   return (
-    <div className="z-[1] fixed inset-0 flex items-center justify-center bg-black/50">
-      <div className="bg-red-600 text-white p-6 rounded-md shadow-lg w-[400px] max-w-full text-center">
-        <h2 className="text-lg font-bold">Error al cerrar sesión</h2>
-        <p className="mt-2">
-          {error.message || 'Ocurrió un problema, intenta nuevamente.'}
-        </p>
-        <button
-          className="mt-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md transition"
-          onClick={() => reset()}
-        >
-          Reintentar
-        </button>
-      </div>
+    <div
+      className="bg-red-100 border border-red-400 text-red-700 p-4 rounded-md max-w-md mx-auto mt-8"
+      role="alert"
+      aria-live="polite"
+    >
+      <h2 className="text-sm font-semibold">Error al cerrar sesión</h2>
+      <p className="mt-1 text-sm">
+        {errorMessage || 'Ocurrió un problema desconocido al cerrar sesión.'}.
+        Redireccionando al login en 3 segundos...
+      </p>
     </div>
   )
 }

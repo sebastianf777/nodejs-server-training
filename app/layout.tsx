@@ -4,6 +4,7 @@ import '../styles/globals.scss'
 import { ReactNode, useEffect } from 'react'
 import { Providers } from './providers'
 import { useRouter } from 'next/navigation'
+import { Toaster } from 'react-hot-toast'
 import {
   LOCAL_STORAGE,
   SESSION_EXPIRATION_TIME,
@@ -35,7 +36,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Toaster position="top-right" reverseOrder={false} />
+        </Providers>
       </body>
     </html>
   )
