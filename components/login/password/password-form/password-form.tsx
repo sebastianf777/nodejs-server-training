@@ -54,7 +54,6 @@ export default function PasswordForm() {
         )}
 
         <div className="footer-form">
-          {/* Botón para recuperar contraseña */}
           <Button
             className="transparent-button"
             radius="full"

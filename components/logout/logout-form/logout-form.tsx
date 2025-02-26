@@ -10,7 +10,7 @@ export default function LogoutForm() {
     e.preventDefault()
     router.push('/login')
   }
-
+  //esto lo dejo en caso de que se pida que no se redireccione automaticamente
   return (
     <div className="flex flex-col flex-1">
       <form onSubmit={handleSubmit}>
