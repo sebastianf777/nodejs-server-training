@@ -30,18 +30,20 @@ export default function ForgotForm() {
   }
 
   return (
-    <div className="flex flex-col flex-1">
+    <div className={'flex flex-col flex-1'}>
       <form onSubmit={handleSubmit}>
         {alerts ? (
           <Alert
-            color="primary"
-            title="Un correo electronico ha sido enviado para resetear tu password"
+            color={'primary'}
+            title={
+              'Un correo electronico ha sido enviado para resetear tu password'
+            }
           />
         ) : (
-          <UserInput label="Correo electrónico" inputType={'email'} />
+          <UserInput label={'Correo electrónico'} inputType={'email'} />
         )}
 
-        <div className="footer-form">
+        <div className={'footer-form'}>
           <Button
             className={'solid-button'}
             color={'primary'}

@@ -27,12 +27,14 @@ export default function UserInput({
   }
 
   return (
-    <div className="relative w-full">
+    <div className={'relative w-full'}>
       <input
         required
-        className="peer w-full rounded-md border border-gray-300 bg-transparent text-white px-4 py-3 outline-none transition focus:border-[#A8C7FA] focus:shadow-md focus:shadow-[#1A73E8]/60"
-        id="email"
-        placeholder=" "
+        className={
+          'peer w-full rounded-md border border-gray-300 bg-transparent text-white px-4 py-3 outline-none transition focus:border-[#A8C7FA] focus:shadow-md focus:shadow-[#1A73E8]/60'
+        }
+        id={'email'}
+        placeholder={' '}
         type={
           inputType === 'password'
             ? showPassword
@@ -87,9 +89,11 @@ export default function UserInput({
       {/* Eye icon button */}
       {inputType === 'password' && togglePasswordVisibility && (
         <button
-          type="button"
+          type={'button'}
           onClick={togglePasswordVisibility}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#A8C7FA] transition"
+          className={
+            'absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#A8C7FA] transition'
+          }
         >
           {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
         </button>

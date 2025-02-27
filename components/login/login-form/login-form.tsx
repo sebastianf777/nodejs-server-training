@@ -21,55 +21,65 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="flex flex-col flex-1 ">
+    <div className={'flex flex-col flex-1 '}>
       <form onSubmit={handleSubmit}>
         {/* TODO | REFACTOR */}
         {loading ? (
-          <div className="flex justify-center">
-            <Spinner color="default" label="Loading" labelColor="foreground" />
+          <div className={'flex justify-center'}>
+            <Spinner
+              color={'default'}
+              label={'Loading'}
+              labelColor={'foreground'}
+            />
           </div>
         ) : (
           <UserInput
-            label="Ingresa tu usuario"
-            inputType="username"
+            label={'Ingresa tu usuario'}
+            inputType={'username'}
             onChange={(e) => setUsername(e.target.value)}
           />
         )}
 
         {/* TODO | Debe ser un link */}
         <Button
-          className="text-[#A8C7FA] bg-transparent border-0 cursor-pointer h-fit text-left p-0 mt-3  hover:text-[#e8eaed]"
-          type="button"
+          className={
+            'text-[#A8C7FA] bg-transparent border-0 cursor-pointer h-fit text-left p-0 mt-3  hover:text-[#e8eaed]'
+          }
+          type={'button'}
           onPress={() => router.push('/login/forgot')}
           isDisabled={loading}
         >
           ¿Olvidaste el correo electrónico?
         </Button>
 
-        <p className="text-[#9aa0a6] mt-12 leading-[1.4] text-sm">
+        <p className={'text-[#9aa0a6] mt-12 leading-[1.4] text-sm'}>
           ¿Esta no es tu computadora? Usa el modo de invitado para navegar de
           forma privada.{' '}
-          <span className="bg-transparent border-0 text-[#A8C7FA] opacity-[.5] underline cursor-pointer p-0 hover:text-[#e8eaed] pointer-events-none">
+          <span
+            className={
+              'bg-transparent border-0 text-[#A8C7FA] opacity-[.5] underline cursor-pointer p-0 hover:text-[#e8eaed] pointer-events-none'
+            }
+          >
             Más información para usar el modo de invitado
           </span>
         </p>
 
-        <div className="footer-form">
+        <div className={'footer-form'}>
           {/* TODO | Debe ser un link */}
           <Button
-            className="transparent-button"
-            radius="full"
-            type="button"
+            className={'transparent-button'}
+            radius={'full'}
+            type={'button'}
             isDisabled
           >
             Crear cuenta
           </Button>
 
           <Button
-            className="solid-button"
-            color="primary"
-            radius="full"
-            type="submit"
+            className={'solid-button'}
+            color={'primary'}
+            radius={'full'}
+            type={'submit'}
             isDisabled={loading}
           >
             Siguiente

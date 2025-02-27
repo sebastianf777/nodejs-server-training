@@ -4,8 +4,6 @@ import { useRouter } from 'next/navigation'
 import { HeroUIProvider } from '@heroui/react'
 import { ReactNode } from 'react'
 
-declare module '@react-types/shared' {}
-
 export function Providers({ children }: { children: ReactNode }) {
   const router = useRouter()
 

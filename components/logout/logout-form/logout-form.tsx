@@ -12,14 +12,14 @@ export default function LogoutForm() {
   }
   //esto lo dejo en caso de que se pida que no se redireccione automaticamente
   return (
-    <div className="flex flex-col flex-1">
+    <div className={'flex flex-col flex-1'}>
       <form onSubmit={handleSubmit}>
-        <div className="footer-form">
+        <div className={'footer-form'}>
           <Button
-            className="solid-button"
-            color="primary"
-            radius="full"
-            type="submit"
+            className={'solid-button'}
+            color={'primary'}
+            radius={'full'}
+            type={'submit'}
           >
             Login
           </Button>

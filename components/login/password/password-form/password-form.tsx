@@ -39,23 +39,27 @@ export default function PasswordForm() {
     <div>
       <form onSubmit={handleSubmit}>
         {loading ? (
-          <div className="flex justify-center">
-            <Spinner color="default" label="Loading" labelColor="foreground" />
+          <div className={'flex justify-center'}>
+            <Spinner
+              color={'default'}
+              label={'Loading'}
+              labelColor={'foreground'}
+            />
           </div>
         ) : error ? (
-          <Alert color="primary" title={error} />
+          <Alert color={'primary'} title={error} />
         ) : (
           <UserInput
-            label="Ingresa tu contraseña"
+            label={'Ingresa tu contraseña'}
             showPasswordToggle={true}
-            inputType="password"
+            inputType={'password'}
             onChange={(e) => setPasswordValue(e.target.value)}
           />
         )}
 
-        <div className="footer-form">
+        <div className={'footer-form'}>
           <Button
-            className="transparent-button"
+            className={'transparent-button'}
             radius="full"
             onPress={() => {
               router.push('/login/forgot')
@@ -65,10 +69,10 @@ export default function PasswordForm() {
             ¿Olvidaste la contraseña?
           </Button>
           <Button
-            className="solid-button"
-            color="primary"
-            radius="full"
-            type="submit"
+            className={'solid-button'}
+            color={'primary'}
+            radius={'full'}
+            type={'submit'}
             isDisabled={loading}
           >
             Siguiente
