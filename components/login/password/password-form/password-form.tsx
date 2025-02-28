@@ -1,18 +1,19 @@
 'use client'
 
-import { Button, Alert } from '@heroui/react'
 import { useRouter } from 'next/navigation'
 import { LOCAL_STORAGE } from '@/components/utils/utils.constants'
 import { FormEvent, useState } from 'react'
 
 import UserInput from '@/components/user-input/user-input'
-import { Spinner } from '@heroui/spinner'
+import { Button, Alert, Loader, NavLink } from '@mantine/core'
+import { IconInfoCircle } from '@tabler/icons-react'
 
 export default function PasswordForm() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [passwordValue, setPasswordValue] = useState('')
   const [error, setError] = useState('')
+  const icon = <IconInfoCircle />
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -39,15 +40,16 @@ export default function PasswordForm() {
     <div>
       <form onSubmit={handleSubmit}>
         {loading ? (
-          <div className={'flex justify-center'}>
-            <Spinner
-              color={'default'}
-              label={'Loading'}
-              labelColor={'foreground'}
-            />
-          </div>
+          <Loader color={'blue'} type={'bars'} className={'mx-auto'} />
         ) : error ? (
-          <Alert color={'primary'} title={error} />
+          <Alert
+            className={'text-[#062E6F] bg-[#A8C7FA]'}
+            variant={'default'}
+            color={'#A8C7FA'}
+            icon={icon}
+          >
+            {error}
+          </Alert>
         ) : (
           <UserInput
             label={'Ingresa tu contraseña'}
@@ -58,22 +60,18 @@ export default function PasswordForm() {
         )}
 
         <div className={'footer-form'}>
-          <Button
+          <NavLink
             className={'transparent-button'}
-            radius="full"
-            onPress={() => {
-              router.push('/login/forgot')
-            }}
-            isDisabled={loading}
-          >
-            ¿Olvidaste la contraseña?
-          </Button>
+            href={'/login/forgot'}
+            label={'¿Olvidaste la contraseña?'}
+            disabled={loading}
+          />
           <Button
+            unstyled
             className={'solid-button'}
-            color={'primary'}
-            radius={'full'}
+            variant="default"
             type={'submit'}
-            isDisabled={loading}
+            disabled={loading}
           >
             Siguiente
           </Button>

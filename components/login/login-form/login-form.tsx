@@ -1,9 +1,9 @@
 'use client'
 
-import { Button } from '@heroui/react'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { Spinner } from '@heroui/spinner'
+import { Button, Loader, NavLink } from '@mantine/core'
+
 import UserInput from '@/components/user-input/user-input'
 
 export default function LoginForm() {
@@ -11,7 +11,6 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false)
   const [username, setUsername] = useState('')
   const handleSubmit = (e: FormEvent) => {
-    // TODO | Test si es necesario o no
     e.preventDefault()
     setLoading(true)
     setTimeout(() => {
@@ -25,13 +24,7 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit}>
         {/* TODO | REFACTOR */}
         {loading ? (
-          <div className={'flex justify-center'}>
-            <Spinner
-              color={'default'}
-              label={'Loading'}
-              labelColor={'foreground'}
-            />
-          </div>
+          <Loader color={'blue'} type={'bars'} className={'mx-auto'} />
         ) : (
           <UserInput
             label={'Ingresa tu usuario'}
@@ -40,17 +33,11 @@ export default function LoginForm() {
           />
         )}
 
-        {/* TODO | Debe ser un link */}
-        <Button
-          className={
-            'text-[#A8C7FA] bg-transparent border-0 cursor-pointer h-fit text-left p-0 mt-3  hover:text-[#e8eaed]'
-          }
-          type={'button'}
-          onPress={() => router.push('/login/forgot')}
-          isDisabled={loading}
-        >
-          ¿Olvidaste el correo electrónico?
-        </Button>
+        <NavLink
+          className={'login-forgot-link'}
+          href={'/login/forgot'}
+          label={'¿Olvidaste el correo electrónico?'}
+        />
 
         <p className={'text-[#9aa0a6] mt-12 leading-[1.4] text-sm'}>
           ¿Esta no es tu computadora? Usa el modo de invitado para navegar de
@@ -65,22 +52,19 @@ export default function LoginForm() {
         </p>
 
         <div className={'footer-form'}>
-          {/* TODO | Debe ser un link */}
-          <Button
+          <NavLink
             className={'transparent-button'}
-            radius={'full'}
-            type={'button'}
-            isDisabled
-          >
-            Crear cuenta
-          </Button>
+            href={'#'}
+            label={'Crear cuenta'}
+            disabled
+          />
 
           <Button
+            unstyled
             className={'solid-button'}
-            color={'primary'}
-            radius={'full'}
+            variant="default"
             type={'submit'}
-            isDisabled={loading}
+            disabled={loading}
           >
             Siguiente
           </Button>

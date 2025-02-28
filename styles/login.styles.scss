@@ -13,3 +13,8 @@ input:-webkit-autofill:active {
     background-color: #0E0E0E !important;
     caret-color: white !important;
 }
+
+//BUTTONS
+.login-forgot-link{
+    @apply text-[#A8C7FA] bg-transparent border-0 cursor-pointer h-fit text-left p-0 mt-3 hover:bg-transparent hover:text-[#e8eaed]
+}
