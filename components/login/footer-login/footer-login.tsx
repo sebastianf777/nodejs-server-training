@@ -1,6 +1,5 @@
 'use client'
-
-import { Button } from '@heroui/react'
+import { NavLink } from '@mantine/core'
 
 export default function FooterLogin() {
   return (
@@ -17,30 +16,24 @@ export default function FooterLogin() {
         <span>Español (Latinoamérica)</span>
       </div>
       <div className={'flex gap-5'}>
-        <Button
-          className={
-            'bg-transparent border-none text-[#9aa0a6] p-0 hover:text-[#e8eaed]'
-          }
+        <NavLink
+          className={'footer-links'}
+          unstyled
           href={'#'}
-        >
-          Ayuda
-        </Button>
-        <Button
-          className={
-            'bg-transparent border-none text-[#9aa0a6] p-0 hover:text-[#e8eaed]'
-          }
+          label={'Ayuda'}
+        />
+        <NavLink
+          className={'footer-links'}
+          unstyled
           href={'#'}
-        >
-          Privacidad
-        </Button>
-        <Button
-          className={
-            'bg-transparent border-none text-[#9aa0a6] p-0 hover:text-[#e8eaed]'
-          }
+          label={'Privacidad'}
+        />
+        <NavLink
+          unstyled
+          className={'footer-links'}
           href={'#'}
-        >
-          Condiciones
-        </Button>
+          label={'Condiciones'}
+        />
       </div>
     </footer>
   )

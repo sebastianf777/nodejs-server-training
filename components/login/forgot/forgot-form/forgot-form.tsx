@@ -1,13 +1,15 @@
 'use client'
 
-import { Button, Alert } from '@heroui/react'
+import { Button, Alert, Loader } from '@mantine/core'
 import { FormEvent, useState } from 'react'
+import { IconInfoCircle } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
 import UserInput from '@/components/user-input/user-input'
 
 export default function ForgotForm() {
   const router = useRouter()
-  const [alerts, setAlerts] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState<boolean>(false)
 
   /**
    * LO importante es la consistencia en que pongas el codigo
@@ -22,23 +24,32 @@ export default function ForgotForm() {
    */
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    if (!alerts) {
-      setAlerts(true)
-    } else {
+    if (success) {
       router.push('/login/password')
+    } else if (!loading) {
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+        setSuccess(true)
+      }, 3000)
     }
   }
+  const icon = <IconInfoCircle />
 
   return (
     <div className={'flex flex-col flex-1'}>
       <form onSubmit={handleSubmit}>
-        {alerts ? (
+        {success ? (
           <Alert
-            color={'primary'}
-            title={
-              'Un correo electronico ha sido enviado para resetear tu password'
-            }
-          />
+            className={'text-[#062E6F] bg-[#A8C7FA]'}
+            variant={'default'}
+            color={'#A8C7FA'}
+            icon={icon}
+          >
+            Un correo electrónico ha sido enviado para resetear tu password
+          </Alert>
+        ) : loading ? (
+          <Loader color={'blue'} type={'bars'} className={'mx-auto'} />
         ) : (
           <UserInput label={'Correo electrónico'} inputType={'email'} />
         )}
@@ -46,11 +57,11 @@ export default function ForgotForm() {
         <div className={'footer-form'}>
           <Button
             className={'solid-button'}
-            color={'primary'}
-            radius={'full'}
             type={'submit'}
+            unstyled
+            disabled={loading}
           >
-            {alerts ? 'Atrás' : 'Siguiente'}
+            {loading || success ? 'Atrás' : 'Siguiente'}
           </Button>
         </div>
       </form>

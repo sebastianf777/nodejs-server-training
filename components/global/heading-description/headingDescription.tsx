@@ -5,7 +5,6 @@ type HeadingDescriptionProps = {
   description?: string
 }
 
-// TODO | Cambiar el nombre de este componente y ponerle uno mas inidicativo
 export default function HeadingDescription({
   heading,
   description,
