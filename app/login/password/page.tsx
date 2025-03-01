@@ -19,7 +19,7 @@ export default function PasswordPage() {
   }, [])
 
   return (
-    <div className="box-container">
+    <div className={'box-container'}>
       <Image
         alt={'Logo'}
         className={'w-10 h-10 self-start mb-4'}
@@ -28,7 +28,7 @@ export default function PasswordPage() {
         width={35}
       />
 
-      <div className="grid grid-cols-2 gap-5 w-full">
+      <div className={'grid grid-cols-2 gap-5 w-full'}>
         <HeadingDescription description={''} heading={username || 'Username'} />
 
         <PasswordForm />

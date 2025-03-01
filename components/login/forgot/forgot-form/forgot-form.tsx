@@ -54,7 +54,7 @@ export default function ForgotForm() {
           <UserInput label={'Correo electrónico'} inputType={'email'} />
         )}
 
-        <div className={'footer-form'}>
+        <div className={'buttons-area'}>
           <Button
             className={'solid-button'}
             type={'submit'}

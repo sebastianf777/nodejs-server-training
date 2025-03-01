@@ -4,7 +4,7 @@ import FooterLogin from '@/components/login/footer-login/footer-login'
 
 export default function LoginLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="layout-login">
+    <div className={'layout-login'}>
       {children}
       <FooterLogin />
     </div>

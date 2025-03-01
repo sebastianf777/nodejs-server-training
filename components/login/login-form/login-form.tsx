@@ -10,6 +10,7 @@ export default function LoginForm() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [username, setUsername] = useState('')
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -51,7 +52,7 @@ export default function LoginForm() {
           </span>
         </p>
 
-        <div className={'footer-form'}>
+        <div className={'buttons-area'}>
           <NavLink
             className={'transparent-button'}
             href={'#'}

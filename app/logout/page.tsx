@@ -19,10 +19,6 @@ export default function LogoutPage() {
       } catch (error) {
         console.error('Logout error:', error)
         throw new Error('Failed to logout: ' + error)
-      } finally {
-        setTimeout(() => {
-          redirect('/login/password')
-        }, 3000)
       }
     }
   }, [])

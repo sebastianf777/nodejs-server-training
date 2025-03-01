@@ -3,7 +3,7 @@ import { NavLink } from '@mantine/core'
 export default function HomeForm() {
   return (
     <div className={'flex flex-col flex-1'}>
-      <div className={'footer-form'}>
+      <div className={'buttons-area'}>
         <NavLink
           unstyled
           label={'Admin'}

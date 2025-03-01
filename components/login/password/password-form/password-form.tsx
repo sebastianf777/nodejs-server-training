@@ -59,7 +59,7 @@ export default function PasswordForm() {
           />
         )}
 
-        <div className={'footer-form'}>
+        <div className={'buttons-area'}>
           <NavLink
             className={'transparent-button'}
             href={'/login/forgot'}
