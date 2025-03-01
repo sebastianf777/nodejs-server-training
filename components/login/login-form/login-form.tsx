@@ -35,7 +35,10 @@ export default function LoginForm() {
         )}
 
         <NavLink
-          className={'login-forgot-link'}
+          classNames={{
+            root: 'bg-[#0E0E0E] text-[#A8C7FA] hover:bg-[#0E0E0E] px-0',
+            body: 'bg-[#0E0E0E] text-[#A8C7FA] hover:opacity-70',
+          }}
           href={'/login/forgot'}
           label={'¿Olvidaste el correo electrónico?'}
         />

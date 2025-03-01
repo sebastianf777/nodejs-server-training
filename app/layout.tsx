@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect } from 'react'
 import { Providers } from './providers'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { Toaster } from 'react-hot-toast'
 import '@mantine/core/styles.css'
 import '../styles/globals.scss'
@@ -19,22 +19,28 @@ import {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' || pathname.startsWith('/admin')) {
+      const storedUsername = localStorage.getItem(LOCAL_STORAGE.USERNAME)
+      if (pathname === '/login/forgot') return
+
+      if (!storedUsername) {
+        router.push('/login')
+        return
+      }
       const sessionTimestamp = localStorage.getItem(
         LOCAL_STORAGE.SESSION_TIMESTAMP,
       )
       const elapsedTime = Date.now() - Number(sessionTimestamp)
-      const storedUsername = localStorage.getItem(LOCAL_STORAGE.USERNAME)
-      if (!storedUsername) {
-        router.push('/login')
-      } else if (!sessionTimestamp || elapsedTime > SESSION_EXPIRATION_TIME) {
+
+      if (!sessionTimestamp || elapsedTime > SESSION_EXPIRATION_TIME) {
         localStorage.removeItem(LOCAL_STORAGE.SESSION_TIMESTAMP)
         router.push('/login/password')
       }
     }
-  }, [router])
+  }, [pathname, router])
   return (
     <html lang="es" {...mantineHtmlProps}>
       <head>

@@ -53,7 +53,6 @@ export default function PasswordForm() {
         ) : (
           <UserInput
             label={'Ingresa tu contraseña'}
-            showPasswordToggle={true}
             inputType={'password'}
             onChange={(e) => setPasswordValue(e.target.value)}
           />

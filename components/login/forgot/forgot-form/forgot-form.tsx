@@ -11,17 +11,6 @@ export default function ForgotForm() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState<boolean>(false)
 
-  /**
-   * LO importante es la consistencia en que pongas el codigo
-   * Si lo podes de un formato, mantenelo a lo largo de todo el proyecto
-   * se llamarian : "convenciones del proyecto y de codigo"
-   *
-   * Si es largo o corto el codigo, lo vemos.
-   * Si es muy corto, ok no creamos la fuicion
-   * si es largo, creamos la funcion
-   * si es mediano, por ahi como ahora, seguimos la convencion.
-   * Si no hay convencion alguna, creala a gusto.
-   */
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (success) {
