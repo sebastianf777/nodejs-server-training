@@ -1,19 +1,21 @@
 'use client'
 
 import { useState, ChangeEvent } from 'react'
-import { PasswordInput, TextInput } from '@mantine/core'
+import { PasswordInput, TextInput, Loader } from '@mantine/core'
 import { IconAt } from '@tabler/icons-react'
 
 type UserInputProps = {
   label: string
   inputType: 'username' | 'email' | 'password'
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  loading?: boolean
 }
 
 export default function UserInput({
   label,
   inputType,
   onChange,
+  loading = false,
 }: UserInputProps) {
   const [value, setValue] = useState('')
   const icon = <IconAt size={16} />
@@ -24,6 +26,9 @@ export default function UserInput({
     }
     setValue(e.target.value)
     onChange?.(e)
+  }
+  if (loading) {
+    return <Loader color="blue" type="bars" className="mx-auto" />
   }
 
   return (

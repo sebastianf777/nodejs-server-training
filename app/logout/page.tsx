@@ -15,30 +15,25 @@ export default function LogoutPage() {
   const router = useRouter()
 
   useEffect(() => {
-    async function simulateLogout() {
+    ;(async function simulateLogout() {
       try {
-        await new Promise((resolve, reject) => {
-          setTimeout(() => {
-            return reject(new Error('Simulated logout error'))
-          }, 3000)
-        })
+        // await new Promise((resolve, reject) => {
+        //   setTimeout(() => {
+        //     return reject(new Error('Simulated logout error'))
+        //   }, 3000)
+        // })
 
+        toast.success('Redireccionando.', { id: 'logout-redirect' })
+        await new Promise((resolve) => setTimeout(resolve, 3000))
+        setLoading(false)
+        await new Promise((resolve) => setTimeout(resolve, 3000))
         localStorage.removeItem(LOCAL_STORAGE.USERNAME)
         localStorage.removeItem(LOCAL_STORAGE.SESSION_TIMESTAMP)
-        toast.success('Redireccionando.', { id: 'logout-redirect' })
-
-        setTimeout(() => {
-          router.push('/login')
-        }, 3000)
       } catch (err: any) {
         console.error('Logout error:', err)
         setError(err)
-      } finally {
-        setLoading(false)
       }
-    }
-
-    simulateLogout()
+    })()
   }, [router])
 
   if (error) throw error

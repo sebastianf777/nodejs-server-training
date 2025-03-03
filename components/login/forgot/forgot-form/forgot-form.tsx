@@ -3,18 +3,21 @@
 import { Button, Alert, Loader } from '@mantine/core'
 import { FormEvent, useState } from 'react'
 import { IconInfoCircle } from '@tabler/icons-react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import UserInput from '@/components/user-input/user-input'
 
 export default function ForgotForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirect = searchParams.get('redirect') || '/login/password'
+
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState<boolean>(false)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (success) {
-      router.push('/login/password')
+      router.push(redirect)
     } else if (!loading) {
       setLoading(true)
       setTimeout(() => {

@@ -5,7 +5,7 @@ import { LOCAL_STORAGE } from '@/components/utils/utils.constants'
 import { FormEvent, useState } from 'react'
 
 import UserInput from '@/components/user-input/user-input'
-import { Button, Alert, Loader, NavLink } from '@mantine/core'
+import { Button, Alert, NavLink } from '@mantine/core'
 import { IconInfoCircle } from '@tabler/icons-react'
 
 export default function PasswordForm() {
@@ -39,22 +39,21 @@ export default function PasswordForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {loading ? (
-          <Loader color={'blue'} type={'bars'} className={'mx-auto'} />
-        ) : error ? (
+        {error ? (
           <Alert
-            className={'text-[#062E6F] bg-[#A8C7FA]'}
-            variant={'default'}
-            color={'#A8C7FA'}
+            className="text-[#062E6F] bg-[#A8C7FA]"
+            variant="default"
+            color="#A8C7FA"
             icon={icon}
           >
             {error}
           </Alert>
         ) : (
           <UserInput
-            label={'Ingresa tu contraseña'}
-            inputType={'password'}
+            label="Ingresa tu contraseña"
+            inputType="password"
             onChange={(e) => setPasswordValue(e.target.value)}
+            loading={loading}
           />
         )}
 
