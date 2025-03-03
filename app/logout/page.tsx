@@ -17,6 +17,8 @@ export default function LogoutPage() {
   useEffect(() => {
     ;(async function simulateLogout() {
       try {
+        // ERROR SIMULATION
+
         // await new Promise((resolve, reject) => {
         //   setTimeout(() => {
         //     return reject(new Error('Simulated logout error'))

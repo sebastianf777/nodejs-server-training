@@ -21,7 +21,6 @@ export default function PasswordForm() {
     const username = localStorage.getItem(LOCAL_STORAGE.USERNAME)
     setLoading(true)
     try {
-      // Realizamos la petición POST al endpoint checkAuth
       const response = await fetch('http://localhost:3000/api/checkAuth', {
         method: 'POST',
         headers: {
@@ -32,14 +31,12 @@ export default function PasswordForm() {
 
       const data = await response.json()
       if (data.token) {
-        // Si se recibe un token, la autenticación fue exitosa
         localStorage.setItem(
           LOCAL_STORAGE.SESSION_TIMESTAMP,
           Date.now().toString(),
         )
         router.push('/admin')
       } else {
-        // En caso de no recibir token, se muestra un error
         setError('Contraseña incorrecta')
         setTimeout(() => setError(''), 1000)
       }
