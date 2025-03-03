@@ -15,24 +15,39 @@ export default function PasswordForm() {
   const [error, setError] = useState('')
   const icon = <IconInfoCircle />
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError('')
-    if (passwordValue === '777Holis') {
-      setLoading(true)
+    const username = localStorage.getItem(LOCAL_STORAGE.USERNAME)
+    setLoading(true)
+    try {
+      // Realizamos la petición POST al endpoint checkAuth
+      const response = await fetch('http://localhost:3000/api/checkAuth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password: passwordValue }),
+      })
 
-      setTimeout(() => {
+      const data = await response.json()
+      if (data.token) {
+        // Si se recibe un token, la autenticación fue exitosa
         localStorage.setItem(
           LOCAL_STORAGE.SESSION_TIMESTAMP,
           Date.now().toString(),
         )
         router.push('/admin')
-      }, 3000)
-    } else {
-      setError('Incorrect password')
-      setTimeout(() => {
-        setError('')
-      }, 1000)
+      } else {
+        // En caso de no recibir token, se muestra un error
+        setError('Contraseña incorrecta')
+        setTimeout(() => setError(''), 1000)
+      }
+    } catch (error) {
+      console.error('Error durante la autenticación:', error)
+      setError('Error conectando al servidor')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -41,17 +56,17 @@ export default function PasswordForm() {
       <form onSubmit={handleSubmit}>
         {error ? (
           <Alert
-            className="text-[#062E6F] bg-[#A8C7FA]"
-            variant="default"
-            color="#A8C7FA"
+            className={'text-[#062E6F] bg-[#A8C7FA]'}
+            variant={'default'}
+            color={'#A8C7FA'}
             icon={icon}
           >
             {error}
           </Alert>
         ) : (
           <UserInput
-            label="Ingresa tu contraseña"
-            inputType="password"
+            label={'Ingresa tu contraseña'}
+            inputType={'password'}
             onChange={(e) => setPasswordValue(e.target.value)}
             loading={loading}
           />

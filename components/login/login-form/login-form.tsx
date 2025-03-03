@@ -11,13 +11,26 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false)
   const [username, setUsername] = useState('')
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
-      localStorage.setItem('username', username)
-      router.push(`/login/password`)
-    }, 3000)
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/checkusername/${username}`,
+      )
+      const data = await res.json()
+      console.log('Respuesta del servidor:', data)
+
+      if (data.check) {
+        localStorage.setItem('username', username)
+        router.push(`/login/password`)
+      } else {
+        console.error('Username inválido')
+      }
+    } catch (error) {
+      console.error('Error en la petición:', error)
+    }
+    setLoading(false)
   }
 
   return (
@@ -29,8 +42,8 @@ export default function LoginForm() {
           onChange={(e) => setUsername(e.target.value)}
           loading={loading}
         />
-        {/*// No estoy seguro de si esto esta bien // No estoy seguro de si esto*/}
-        {/*esta bien // No estoy seguro de si esto esta bien*/}
+        {/*// No estoy seguro de si esto bien // No estoy seguro de si esto*/}
+        {/* bien // No estoy seguro de si esto bien*/}
         <NavLink
           classNames={{
             root: 'bg-[#0E0E0E] text-[#A8C7FA] hover:bg-[#0E0E0E] px-0',

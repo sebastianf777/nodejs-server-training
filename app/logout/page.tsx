@@ -39,20 +39,25 @@ export default function LogoutPage() {
   if (error) throw error
 
   return (
-    <div className="box-container">
+    <div className={'box-container'}>
       {loading ? (
-        <Loader color="blue" type={'bars'} size="lg" className="mx-auto" />
+        <Loader
+          color={'blue'}
+          type={'bars'}
+          size={'lg'}
+          className={'mx-auto'}
+        />
       ) : (
         <>
           <Image
-            alt="Logo"
-            className="w-10 h-10 self-start mb-4"
+            alt={'Logo'}
+            className={'w-10 h-10 self-start mb-4'}
             height={35}
-            src="/assets/img/google-logo.png"
+            src={'/assets/img/google-logo.png'}
             width={35}
           />
-          <div className="grid grid-cols-[auto_1fr] gap-4 mt-4">
-            <HeadingDescription heading="Te deslogueaste correctamente" />
+          <div className={'grid grid-cols-[auto_1fr] gap-4 mt-4'}>
+            <HeadingDescription heading={'Te deslogueaste correctamente'} />
             <LogoutForm />
           </div>
         </>

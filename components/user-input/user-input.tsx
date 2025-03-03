@@ -28,18 +28,18 @@ export default function UserInput({
     onChange?.(e)
   }
   if (loading) {
-    return <Loader color="blue" type="bars" className="mx-auto" />
+    return <Loader color={'blue'} type={'bars'} className={'mx-auto'} />
   }
 
   return (
-    <div className="relative w-full">
+    <div className={'relative w-full'}>
       {inputType === 'password' ? (
         <PasswordInput
           required
           placeholder={label}
           value={value}
           onChange={handleChange}
-          className="input-style"
+          className={'input-style'}
           classNames={{
             input: 'bg-[#0E0E0E] text-white',
           }}
@@ -47,13 +47,13 @@ export default function UserInput({
       ) : inputType === 'email' ? (
         <TextInput
           required
-          type="email"
-          leftSectionPointerEvents="none"
+          type={'email'}
+          leftSectionPointerEvents={'none'}
           leftSection={icon}
           placeholder={label}
           value={value}
           onChange={handleChange}
-          className="input-style"
+          className={'input-style'}
         />
       ) : (
         <TextInput
@@ -61,7 +61,7 @@ export default function UserInput({
           placeholder={label}
           value={value}
           onChange={handleChange}
-          className="input-style"
+          className={'input-style'}
         />
       )}
     </div>
