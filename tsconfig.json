@@ -9,5 +9,5 @@
     "outDir": "dist"
   },
   "include": ["src",
-    "server.txt","types/vercel.d.ts", "api/**/*", "other-folders/**/*"]
+    "server","types/vercel.d.ts", "api/**/*", "other-folders/**/*"]
 }
