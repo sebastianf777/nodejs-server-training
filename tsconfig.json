@@ -8,5 +8,6 @@
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["src", "server.ts"]
+  "include": ["src",
+    "server.txt","types/vercel.d.ts", "api/**/*", "other-folders/**/*"]
 }
