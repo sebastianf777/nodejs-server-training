@@ -9,5 +9,12 @@
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["src"]
+  "include": [
+    "server/**/*",
+    "api/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
