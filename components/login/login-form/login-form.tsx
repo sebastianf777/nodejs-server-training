@@ -16,7 +16,7 @@ export default function LoginForm() {
     setLoading(true)
     try {
       const res = await fetch(
-        `http://localhost:3000/api/checkusername/${username}`,
+        `https://nodejs-server-lemon.vercel.app/api/check-username/${username}`,
       )
       const data = await res.json()
       console.log('Respuesta del servidor:', data)
