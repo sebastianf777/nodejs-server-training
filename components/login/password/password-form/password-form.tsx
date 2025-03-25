@@ -21,13 +21,16 @@ export default function PasswordForm() {
     const username = localStorage.getItem(LOCAL_STORAGE.USERNAME)
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:3000/api/checkAuth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://nodejs-server-lemon.vercel.app/api/check-auth',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password: passwordValue }),
         },
-        body: JSON.stringify({ username, password: passwordValue }),
-      })
+      )
 
       const data = await response.json()
       if (data.token) {
