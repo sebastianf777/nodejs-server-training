@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .idea
@@ -35,3 +36,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+=======
+/tmp
+/out-tsc
+
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/.pnp
+.pnp.js
+
+.vscode/*
+.vercel
+>>>>>>> cfaaaa1c56c402f0bac7e7bd1cb6fc5d6077b81f

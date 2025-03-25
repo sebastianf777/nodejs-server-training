@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/nextjs-login.iml" filepath="$PROJECT_DIR$/.idea/nextjs-login.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/../nextjs-login/.idea/nextjs-login.iml" filepath="$PROJECT_DIR$/../nextjs-login/.idea/nextjs-login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/nodejs-server.iml" filepath="$PROJECT_DIR$/.idea/nodejs-server.iml" />
+>>>>>>> cfaaaa1c56c402f0bac7e7bd1cb6fc5d6077b81f
     </modules>
   </component>
 </project>
