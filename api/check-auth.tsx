@@ -4,6 +4,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
     const { username, password } = req.body;
     console.log(`Authenticating user: ${username}`);
+    res.setHeader('Access-Control-Allow-Origin', '*')
 
     if (password === "777Holis") {
         const dummyToken = "abc123";
